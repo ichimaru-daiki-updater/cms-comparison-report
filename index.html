@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WordPressなど主要CMSの公開脆弱性データの比較可能性と、W3Techsによる利用率を整理したレポート。">
+  <title>CMS比較 | 脆弱性情報と需要性</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5c687d;
+      --line: #dce3ed;
+      --paper: #fff;
+      --wash: #f3f6fb;
+      --blue: #3456d1;
+      --blue-soft: #e9edff;
+      --amber: #79520a;
+      --amber-soft: #fff4dc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--wash);
+      color: var(--ink);
+      font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
+    }
+    main { width: min(920px, calc(100% - 32px)); margin: 42px auto; }
+    header, section, footer {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: clamp(22px, 4vw, 38px);
+      margin-bottom: 18px;
+    }
+    header { border-top: 5px solid var(--blue); }
+    .eyebrow {
+      color: var(--blue);
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.7rem); line-height: 1.2; margin: 10px 0 14px; }
+    h2 { font-size: 1.35rem; line-height: 1.35; margin: 0 0 18px; }
+    h3 { font-size: 1rem; margin: 24px 0 8px; }
+    p { margin: 10px 0; }
+    .lede { color: var(--muted); font-size: 1.05rem; max-width: 70ch; }
+    .date { color: var(--muted); font-size: .9rem; }
+    .callout {
+      border-left: 4px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-top: 22px;
+    }
+    .callout.caution { border-color: #dda323; background: var(--amber-soft); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th, td { padding: 12px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+    th { color: var(--muted); font-size: .84rem; font-weight: 700; }
+    td:nth-child(2), td:nth-child(3) { white-space: nowrap; }
+    tr:first-child td { font-weight: 750; }
+    .bar {
+      width: 150px;
+      max-width: 25vw;
+      height: 10px;
+      background: #edf0f6;
+      border-radius: 9px;
+      overflow: hidden;
+    }
+    .bar span { display: block; height: 100%; background: var(--blue); border-radius: inherit; }
+    .note, small { color: var(--muted); font-size: .88rem; }
+    .pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 99px;
+      background: var(--amber-soft);
+      color: var(--amber);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+    ol, ul { padding-left: 1.35rem; }
+    li { padding-left: .2rem; margin: 8px 0; }
+    a { color: #2347ba; text-underline-offset: 3px; overflow-wrap: anywhere; }
+    footer { color: var(--muted); font-size: .9rem; }
+    @media (max-width: 560px) {
+      main { width: min(100% - 20px, 920px); margin: 12px auto; }
+      header, section, footer { border-radius: 12px; padding: 20px; }
+      .bar { width: 80px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">CMS comparison brief</div>
+    <h1>CMS比較：脆弱性情報と需要性</h1>
+    <p class="lede">WordPressを他の主要CMSと比較し、公開脆弱性の件数と需要性を混同せずに評価します。</p>
+    <p class="date">調査日：2026年10月9日</p>
+    <div class="callout">
+      <strong>要点:</strong> WordPressは調査対象の中で採用が最も広く、全ウェブサイトの40.1%で利用されています。一方、CMS本体だけの脆弱性件数を同じ条件で比較できる共通データは確認できませんでした。キーワード検索の合計だけで「他より危険」と判断するのは適切ではありません。
+    </div>
+  </header>
+
+  <section>
+    <h2>需要性：ウェブサイトでの利用状況</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>CMS</th><th>全ウェブサイトでの利用率</th><th>CMSシェア*</th><th>利用率の目安</th></tr></thead>
+        <tbody>
+          <tr><td>WordPress</td><td>40.1%</td><td>58.6%</td><td><div class="bar" aria-label="40.1%"><span style="width:100%"></span></div></td></tr>
+          <tr><td>Shopify</td><td>5.4%</td><td>7.8%</td><td><div class="bar" aria-label="5.4%"><span style="width:13.5%"></span></div></td></tr>
+          <tr><td>Wix</td><td>4.2%</td><td>6.1%</td><td><div class="bar" aria-label="4.2%"><span style="width:10.5%"></span></div></td></tr>
+          <tr><td>Joomla</td><td>1.1%</td><td>1.6%</td><td><div class="bar" aria-label="1.1%"><span style="width:2.75%"></span></div></td></tr>
+          <tr><td>Drupal</td><td>0.6%</td><td>0.9%</td><td><div class="bar" aria-label="0.6%"><span style="width:1.5%"></span></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">* CMSシェアは、W3TechsがCMSを把握しているウェブサイト内での比率です。利用率は全ウェブサイトに対する割合。W3Techsは日次更新のため、上記は調査日に参照した値です。</p>
+    <p>この統計が示すのは公開ウェブサイトでの採用の広さであり、新規案件数、利用者数、売上、将来の成長率そのものではありません。ShopifyとWixはホスト型サービス、WordPress・Joomla・Drupalは主に自己ホスト型で、製品境界や運用責任も異なります。</p>
+  </section>
+
+  <section>
+    <h2>脆弱性件数：比較可能性</h2>
+    <p><span class="pill">共通条件でのCMS本体件数：確定できず</span></p>
+    <p>今回確認した範囲では、WordPress・Shopify・Wix・Joomla・Drupalについて、CMS本体だけを同じ定義・同じデータベースで数えた信頼できる横並びの件数は得られませんでした。</p>
+    <ol>
+      <li><strong>検索語は製品本体を識別しない。</strong> CVEのキーワード検索には、拡張機能、テーマ、連携製品や説明中に名称が現れる別製品が混ざる可能性があります。</li>
+      <li><strong>製品分類が揃わない。</strong> CVE/NVDの製品識別子（CPE）の登録状況は一様ではなく、本体と拡張を一貫して分離できるとは限りません。バージョンのワイルドカード指定も今回、有効な共通集計条件として使えませんでした。</li>
+      <li><strong>製品形態が違う。</strong> ShopifyやWixのホスト型サービスの不具合範囲と、自己ホスト型CMSソフトウェアの本体を同じ境界で数える共通ルールは確認できませんでした。</li>
+      <li><strong>合計件数は実際のリスクではない。</strong> 影響バージョン、深刻度、悪用状況、修正状況、個々のサイト構成を無視した総数だけでは、利用者のリスクを評価できません。</li>
+    </ol>
+    <div class="callout caution">
+      <strong>読み方:</strong> 「件数を確定できない」は「脆弱性がない」という意味ではありません。また、件数の多さだけを根拠にWordPressが他CMSより危険とも結論できません。
+    </div>
+    <h3>件数を今後比較する場合の条件</h3>
+    <p>対象期間と公開日の定義、CMS本体／拡張機能の範囲、重複排除したCVE ID、プロジェクトの公式アドバイザリとの照合方法を事前に定めます。製品識別子で判定できない記録は別枠で開示し、ホスト型サービスは「本体」の境界を定義してから比較する必要があります。</p>
+  </section>
+
+  <section>
+    <h2>導入判断で見るべき実務項目</h2>
+    <ul>
+      <li><strong>構成の棚卸し:</strong> WordPressなら本体に加えてプラグイン、テーマ、独自コードを確認。ほかのCMSでもモジュール、アプリ、連携機能を対象に含めます。</li>
+      <li><strong>更新運用:</strong> セキュリティ更新の通知、適用までの時間、検証・ロールバック手順、サポート対象バージョンを比較します。</li>
+      <li><strong>責任分界:</strong> 自己ホスト型ではホスティング、設定、バックアップ、更新が自社責任になりやすく、ホスト型でもアカウント、権限、アプリ連携などの責任は残ります。</li>
+      <li><strong>リスク指標:</strong> 総CVE数より、稼働中の構成に該当する未修正の重大脆弱性、既知悪用の有無、修正までの所要時間を重視します。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>出典</h2>
+    <h3>利用統計（W3Techs、調査日参照。ページは日次更新）</h3>
+    <ul>
+      <li><a href="https://w3techs.com/technologies/details/cm-wordpress">WordPress</a></li>
+      <li><a href="https://w3techs.com/technologies/details/cm-shopify">Shopify</a></li>
+      <li><a href="https://w3techs.com/technologies/details/cm-wix">Wix</a></li>
+      <li><a href="https://w3techs.com/technologies/details/cm-joomla">Joomla</a></li>
+      <li><a href="https://w3techs.com/technologies/details/cm-drupal">Drupal</a></li>
+      <li><a href="https://w3techs.com/faq">W3Techs FAQ：データ収集・検出方法</a></li>
+    </ul>
+    <h3>脆弱性データの定義・制約</h3>
+    <ul>
+      <li><a href="https://nvd.nist.gov/developers/vulnerabilities">NVD CVE API</a></li>
+      <li><a href="https://github.com/CVEProject/cvelistV5/blob/main/README.md">CVE List V5 README</a></li>
+      <li><a href="https://wordpress.org/about/security/">WordPress Security</a></li>
+      <li><a href="https://www.drupal.org/security">Drupal Security Advisories</a></li>
+      <li><a href="https://developer.joomla.org/security-centre.html">Joomla Security Centre</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <strong>調査上の注意:</strong> 利用率は2026年10月9日に参照した日次更新値を記録しています。将来の再調査では最新値をご確認ください。このレポートは比較可能性のない脆弱性件数を「0」とみなしたり、製品名のキーワード検索をCMS本体の件数として扱ったりしていません。
+  </footer>
+</main>
+</body>
+</html>
